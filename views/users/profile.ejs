@@ -1,0 +1,69 @@
+<%layout("/layouts/boilerplate")%>
+<div class="out-container">
+  <div class="user-container mt-4" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title "> <div class="profile-icon col-5  mb-4 ">
+        <i class="fa-solid fa-user  "></i>
+   </div>
+   <div class="ms-3">
+    <b> @<%=currUser.username%></b>
+   </div>
+     </h5>
+     <br>
+    </div>
+  </div> 
+</div>
+ <div class="btns-profile">
+         <a href="/listings/new-property" class=" btn btn-dark mt-3 col-4 me-5">Add Property</a>
+    <a href="/listings/new-buisness" class=" btn btn-dark ms-2 mt-3 col-4 offset-4">Add Business</a>
+     </div>
+<hr>
+<div>
+  <%if(allListings!=''){%>
+   <h2>YOUR LISTINGS</h2> 
+   <div class="row row-cols-lg-3  row-cols-md-2 row-cols-sm-1 mt-3 listing-card">
+    <%for(let listing of allListings){%>
+        <a href="/listings/<%=listing._id%>" class="listing-link">
+             <div class="card col" >
+            <img src="<%=listing.image.url%>" class="card-img-top" alt="listing_image" style="height: 20rem;">
+            <div class="card-img-overlay">
+                <h5 class="card-title"></h5>
+                <p class="card-text"></p>
+                <p class="card-text"><small></small></p>
+              </div>
+            <div class="card-body">
+              <p class="card-text">
+                <b><%=listing.title%></b><br>
+                &#8377; <%=listing.price.toLocaleString("en-IN")%>/night
+              <i class="tax-info">&nbsp;+ &#8377;<%=(0.18*listing.price).toLocaleString("en-IN")%></i>                  </p>
+            </div>
+          </div>
+        </a>
+          <%}%>
+   </div>
+   <%}%>
+   <%if(allBusinesses!=''){%>
+   <h2>YOUR BUSINESSES</h2>
+   <div class="row row-cols-lg-3  row-cols-md-2 row-cols-sm-1 mt-3 listing-card">
+    <%for(let business of allBusinesses){%>
+    <a href="/listings/<%=business._id%>" class="listing-link">
+     <div class="card col" >
+         <img src="<%=business.image.url%>" class="card-img-top" alt="image" style="height: 20rem;">
+         <div class="card-img-overlay">
+             <h5 class="card-title"></h5>
+             <p class="card-text"></p>
+             <p class="card-text"><small></small></p>
+           </div>
+         <div class="card-body">
+           <p class="card-text">
+             <b><%=business.title%></b><br>
+         </div>
+       </div>
+    </a>
+       <%}%>
+</div>
+<%}%>
+
+   
+
+

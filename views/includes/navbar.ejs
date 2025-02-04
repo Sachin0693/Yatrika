@@ -1,0 +1,96 @@
+<style>
+  .btn-search {
+    background-color: #fe424d;
+    color: white;
+    border-radius: 25px;
+    padding: 0 1rem 0 1rem;
+    height: 50px;
+    width: 50px;
+  }
+
+  .btn-search:hover {
+    background-color: #fe424d;
+    color: white;
+  }
+
+  .search-input {
+    border-radius: 25px;
+    padding: 0.5rem 3rem 0.5rem 3rem;
+  }
+
+  /* Custom styling for Yatrika text */
+  .navbar-brand {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #fe424d;  /* Initial color */
+    transition: color 0.3s, transform 0.3s; /* Smooth transitions for color and scaling */
+  }
+
+  .navbar-brand:hover {
+    color: #ff8c42;  /* Hover color */
+    transform: scale(1.1);  /* Scale up on hover */
+  }
+  
+  .navbar-nav .nav-link {
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  /* Hover effects for nav links */
+  .navbar-nav .nav-link:hover {
+    color: #fe424d;
+    text-decoration: underline;
+  }
+</style>
+
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/listings">
+      <i class="fa-regular fa-compass"></i> Yatrika
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" href="/listings"></a>
+      </div>
+      <div class="navbar-nav ms-auto">
+        <form class="d-flex needs-validation" role="search" action="/Listings/search" novalidate>
+          <div class="search-bar me-2">
+            <div class="search-date mb-2">
+              <label for="checkin" class="form-label search-label">Check In:</label>
+              <input name="checkin" class="form-control me-2 search-input" type="date" required>
+            </div>
+            <div class="search-date mb-2 ms-1">
+              <label for="checkout" class="form-label search-label">Check Out:</label>
+              <input name="checkout" class="form-control me-2 search-input" type="date" required>
+            </div>
+            <div class="search-date ms-1">
+              <label for="city" class="form-label search-label">City:</label>
+              <input name="city" class="form-control me-2 search-input" type="text" placeholder="search city" required>
+            </div>
+          </div>
+          <button class="btn btn-search mt-2" type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </form>
+      </div>
+      <div class="navbar-nav ms-auto">
+        <% if (!currUser) { %>
+          <a class="nav-link" href="/login">List a Stay/Business</a>
+          <a class="nav-link" href="/signup"><b>Sign Up</b></a>
+          <a class="nav-link" href="/login"><b>Login</b></a>
+        <% } %>
+        <% if (currUser) { %>
+          <div class="navbar-nav">
+            <a class="nav-link" href="/<%= currUser._id %>/profile">Your Profile</a>
+          </div>
+          <a class="nav-link" href="/<%= currUser._id %>/bookings">Bookings</a>
+          <a class="nav-link" href="/logout"><b>Logout</b></a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</nav>

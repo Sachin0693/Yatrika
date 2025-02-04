@@ -1,0 +1,343 @@
+
+
+body{
+    font-family: "Plus Jakarta Sans",sans-serif !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.container{
+    flex: 1;
+}
+
+/* SOS Button Styling */
+.sos-btn-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
+  
+  .sos-btn {
+    background-color: #fe424d;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 50%;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+  }
+  
+  .sos-btn:hover {
+    background-color: #d2373f;
+  }
+  
+/* navbar */
+.navbar{
+    height: 5rem;
+    background-color: white ;
+}
+
+.search-bar{
+    display: flex;
+    background-color: white;
+   
+  box-shadow:5px !important;
+  text-align: center !important;
+  
+}
+
+.search-label{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    align-items: center;
+    font-size: 0.8rem !important;
+    
+}
+
+.search-input{
+    display: flex !important;
+    justify-content: center !important;
+    font-size: 0.8rem !important;
+    background-color: white !important;
+}
+.search-date{
+  
+ text-wrap: balance;
+}
+/* .search-bar :hover{
+    background-color: rgb(168, 159, 159);
+    opacity: 80% !important;
+    border-radius: 30px !important;
+} */
+
+/* .search-bar input{
+    width: 1rem !important;
+} */
+
+.fa-compass{
+    color:#fe424d;
+    font-size: 2rem;
+}
+
+.nav-link{
+    color: #222222 !important;
+    background-color: white !important;
+}
+.f-info-links a{
+    text-decoration: none;
+    color: #222222;
+}
+
+.f-info-links :hover{
+    text-decoration: underline;
+    
+}
+
+.f-info-links,
+.f-info-socials,
+.f-info-brand{
+    width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.f-info-socials i{
+    margin-right: 1rem;
+    font-size: 1.2rem;
+}
+
+
+
+
+.f-info{
+    text-align: center;
+    height: 8rem;
+    display: flex;
+    background-color:#ebebeb ;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space;
+}
+
+/* cards */
+
+.listing-card{
+    border: none !important;
+    margin-bottom: 2rem;
+}
+
+.card-img-top{
+    border-radius: 0.5rem !important;
+    width: 100% !important;
+   object-fit: cover !important;
+}
+
+.card-body{
+    padding: 0 !important;
+
+}
+.card-text{
+    font-weight: 400 !important;
+}
+.listing-link{
+    text-decoration: none;
+}
+/* Card Effect */
+.card-img-overlay{
+    opacity: 0;
+}
+.card-img-overlay:hover{
+    opacity: 0.2;
+    background-color: white;
+}
+
+.add-btn{
+background-color: #fe424d !important;
+border: none !important;
+}
+
+.edit-btn{
+    background-color: #fe424d !important;
+border: none !important;
+}
+
+/* show page */
+.show-img{
+    height:30vh ;
+}
+.btns{
+    display: flex;
+}
+
+.show-card{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* profile page */
+
+
+.user-container{
+   
+    padding: 50px 50px 50px 50px;
+    display: inline-flex;
+   
+   border-radius: 10px;
+   border-width: 1px;
+  
+  
+}
+
+.user-container i{
+    float: inline-start;
+   font-size: 5rem;
+}
+
+.user-container h5{
+   font-size: 2rem;
+}
+.out-container{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+   
+}
+
+.profile-icon{
+    
+    display: flex;
+    height: 80px;
+    width: 80px !important;
+    border-radius: 50%;
+    background-color: rgb(180, 172, 172);
+  height: 10rem;
+  width: 10rem !important;
+}
+
+.profile-icon i{
+    
+    margin: auto;
+}
+
+.btns-profile{
+    display: flex;
+    justify-content: center;
+}
+
+/* booking page */
+
+.booking-card{
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center;
+    margin-top: 200px !important;
+   
+}
+
+.date-book{
+    display: flex;
+}
+
+.date-input{
+    font-family:"Plus Jakarta Sans",sans-serif !important;
+}
+
+.card-header{
+    text-align: center;
+    margin-bottom: 5px !important;
+    background-color: rgb(238, 232, 232) !important;
+}
+
+.price-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.booked-card{
+    display: flex;
+    box-shadow: 10px 10px rgb(201, 196, 196);
+    border: 8px !important;
+}
+
+.booked-card :hover{
+    opacity: 80%;
+}
+
+.booking-container{
+    display: flex;
+}
+
+.checkin{
+    padding: 10px 10px 10px 10px;
+    background-color: #fe424d;
+    color: white;
+    border-radius: 20px;
+}
+
+.checkout{
+    padding: 10px 10px 10px 10px;
+    background-color: #fe424d;
+    color: white;
+    border-radius: 20px;
+}
+
+.booking-date{
+    font-size: 0.8rem;
+    margin-top: 120px;
+   padding-left: 150px;
+}
+
+.stay-range{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#filters{
+    display: flex;
+    text-wrap: wrap;
+    align-items: center;
+   
+  }
+  #filters a{
+    text-decoration: none;
+    color: #222222;
+  }
+  .filter-icons{
+    display: flex;
+  }
+  .filter{
+  text-align: center;
+  margin-right: 2rem;
+  margin-top: 2rem;
+  font-style: normal !important;
+  }
+  .filter:hover{
+    opacity: 0.7;
+  }
+  .filter p{
+    font-size: 0.8rem;
+  }
+  .tax-info{
+    display: none;
+  }
+  .tax-toggle{
+    border: 1px solid black;
+    border-radius: 1rem;
+    height: 3rem;
+    padding: 1rem;
+    margin-left: 5rem ;
+    display: flex;
+    align-items: center;
+  }
+
+  .confirmContainer{
+    display: flex !important;
+    justify-content: center !important;
+  }

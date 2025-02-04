@@ -1,0 +1,45 @@
+<%layout("/layouts/Bookinghead.ejs")%>
+<%if(!currUser._id.equals(listing.owner._id)){%>
+<form method="post" class="booking-card needs-validation " action="/listings/<%=listing._id%>" novalidate>
+    <div class="card ">
+        <div class="card-header ">
+          Booking Details
+        </div>
+        <div class="card-body">
+            <div class="date-book ">
+                 <div class="mb-3 ms-2 me-2">
+                <label for="checkin" class="form-label">Check In:</label>
+                <input name="checkin" placeholder="enter checkin date" type="date" class="form-control date-input mes-2" required>
+            </div>
+            <div class="mb-3 me-2 ms-2">
+                <label for="checkout" class="form-label">Check Out:</label>
+                <input name="checkout" placeholder="enter checkin date" type="date" class="form-control date-input" required>
+            </div>
+            </div>
+            <div class="ms-2 me-2">
+                 <div class="mb-3 ">
+                <label for="Name" class="form-label">Name:</label>
+                <input name="Name" placeholder="Enter name" type="text" class="form-control" required>
+            </div>
+            <div class="mb-3 ">
+                <label for="contact" class="form-label">Contact:</label>
+                <input name="contact" placeholder="Contact number" type="number" class="form-control " required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email Address:</label>
+                <input name="email" placeholder="Email Address" type="text" class="form-control " required>
+            </div>
+            <div class="mb-3">
+                <h5 style="font-size: large;">Price: <%=(listing.price+0.18*listing.price)%>(<i>includes taxes</i>)</h5>
+            </div>
+            <button class="btn btn-primary mb-2">Confirm booking</a>
+            </div>
+        </div>
+      </div>
+</form>
+<%}else{%>
+    <div class=" mt-5 card ">
+        <a class="btn btn-primary " href="/listings"> you own this property ! Redirect to home<a></a>
+    </div>
+    
+    <%}%>

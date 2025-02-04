@@ -1,0 +1,41 @@
+<%layout("/layouts/boilerplate")%>
+
+<h2 class="mt-3 mb-5">Results...</h2>
+<div class="row row-cols-lg-3  row-cols-md-2 row-cols-sm-1 mt-3 listing-card">
+    <%for(let listing of allListings){%>
+        <a href="/listings/<%=listing._id%>" class="listing-link">
+             <div class="card col" >
+            <img src="<%=listing.image.url%>" class="card-img-top" alt="listing_image" style="height: 20rem;">
+            <div class="card-img-overlay">
+                <h5 class="card-title"></h5>
+                <p class="card-text"></p>
+                <p class="card-text"><small></small></p>
+              </div>
+            <div class="card-body">
+              <p class="card-text">
+                <b><%=listing.title%></b><br>
+                &#8377; <%=listing.price.toLocaleString("en-IN")%>/night
+              <i class="tax-info">&nbsp;+ &#8377;<%=(0.18*listing.price).toLocaleString("en-IN")%></i>                  </p>
+            </div>
+          </div>
+        </a>
+          <%}%>
+</div>
+      <div class="row row-cols-lg-3  row-cols-md-2 row-cols-sm-1 mt-3 listing-card">
+       <%for(let business of allBusinesses){%>
+       <a href="/<%=business._id%>" class="listing-link">
+        <div class="card col" >
+            <img src="<%=business.image.url%>" class="card-img-top" alt="image" style="height: 20rem;">
+            <div class="card-img-overlay">
+                <h5 class="card-title"></h5>
+                <p class="card-text"></p>
+                <p class="card-text"><small></small></p>
+              </div>
+            <div class="card-body">
+              <p class="card-text">
+                <b><%=business.title%></b><br>
+            </div>
+          </div>
+       </a>
+          <%}%>
+</div>

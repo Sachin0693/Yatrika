@@ -1,0 +1,42 @@
+<%layout("/layouts/boilerplate")%>
+<link rel="stylesheet" href="/css/style.css">
+    <div class="row mt-3">
+        <div class="col-8 offset-2">
+            <h3>Edit Your Listing</h3>
+ <form method="POST" action="/listings/<%=listing._id%>?_method=PUT" novalidate class="needs-validation" enctype="multipart/form-data">
+        <div class="mb-3">
+             <label for="newTitle" class="form-label">Title:</label>
+    <textarea id="newTitle" name="title" placeholder="Enter title here" class="form-control" required><%=listing.title%></textarea>
+        </div>
+       <div class="mb-3">
+<label for="newDescription" class="form-label">Description:</label>
+    <textarea id="newDescription" name="description" placeholder="Enter Description here" class="form-control" required><%=listing.description%></textarea>
+       </div>
+       <div class="mb-3">
+        <img src="<%=orgImg%>">
+       </div>
+       <div class="mb-3">
+         <label for="newImage" class="form-label">Image Url:</label>
+    <input id="newImage" name="image" placeholder="Enter Image url here" class="form-control" type="file">
+       </div>
+   <div class="row">
+    <div class="mb-3 col-md-4">
+        <label for="newPrice" class="form-label">Price:</label>
+    <textarea id="newPrice" name="price" placeholder="Enter new price here" type="number" class="form-control" required><%=listing.price%></textarea>
+       </div>
+        <div class="mb-3 col-md-8">
+        <label for="newcity" class="form-label">City:</label>
+    <textarea id="newcity" name="city" placeholder="Enter city here" class="form-control" required><%=listing.city%></textarea>
+       </div>
+   </div>
+       <div class="mb-3">
+        <label for="newLocation" class="form-label">Location:</label>
+    <textarea id="newLocation" name="location" placeholder="Enter location here" class="form-control" required><%=listing.location%></textarea>
+       </div>
+    <button class=" btn btn-dark edit-btn mt-3 ">Update</button>
+    </form>
+        </div>
+    </div>
+    
+
+

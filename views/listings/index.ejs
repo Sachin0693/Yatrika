@@ -1,0 +1,193 @@
+<%layout("/layouts/boilerplate")%>
+    <div id="filters" >
+      <div class="filter-icons w-md-50">
+      <a href="/listings/search">
+         <div class="filter">
+     <div><i class="fa-solid fa-fire"></i></div> 
+     <p> Trending</p>
+     </div>
+      </a>
+       
+     <a href="/listings/search"> <div class="filter"><div>
+       <i class="fa-solid fa-bed"></i>
+     </div>
+    <p>Rooms</p>
+    </div></a>
+     
+    <a href="/listings/search"><div class="filter"><div>
+      <i class="fa-solid fa-mountain"></i>
+    </div>
+    <p>Mountains</p>
+    </div></a>
+    
+    <a href="/listings/search"><div class="filter"><div>
+      <i class="fa-regular fa-snowflake"></i>
+    </div>
+    <p>Arctic</p>
+    </div></a>
+    
+    <a href="/listings/search"><div class="filter"><div>
+      <i class="fa-solid fa-tree"></i>
+    </div>
+    <p>Forests</p>
+    </div></a>
+    
+    <a href="/listings/search"><div class="filter"><div>
+      <i class="fa-solid fa-ship"></i>
+    </div>
+    <p>Cruise</p>
+    </div></a>
+    
+    <a href="/listings/search"> <div class="filter"><div>
+      <i class="fa-solid fa-tent"></i>
+    </div>
+    <p>Camping</p>
+    </div></a>
+   
+    <a href="/listings/search"> <div class="filter"><div>
+      <i class="fa-solid fa-hotel"></i>
+    </div>
+    <p>City</p>
+    </div></a>
+   
+    <a href="/listings/search"> <div class="filter"><div>
+      <i class="fa-solid fa-star-of-david"></i>
+    </div>
+    <p>Stargazing</p>
+    </div></a>
+   
+    <a href="/listings/search"> <div class="filter"><div>
+      <i class="fa-solid fa-landmark-dome"></i>
+    </div>
+    <p>Monuments</p>
+    </div></a>
+<!-- SOS Button in HTML -->
+<div class="sos-btn-container">
+  <button class="sos-btn" id="sosButton">SOS</button>
+</div>
+
+
+      </div>
+    <div class="tax-toggle ms-auto mt-2 h-25">
+      <div class="form-check-reverse form-switch ">
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+        <label class="form-check-label" for="flexSwitchCheckDefault">Display total after taxes</label>
+      </div>
+    </div>
+    </div>
+    <h1>EXPLORE PROPERTIES</h1><br>
+    <div class="row row-cols-lg-3  row-cols-md-2 row-cols-sm-1 mt-3 listing-card">
+        <%for(let listing of allListings){%>
+            <a href="/listings/<%=listing._id%>" class="listing-link">
+                 <div class="card col" >
+                <img src="<%=listing.image.url%>" class="card-img-top" alt="listing_image" style="height: 20rem;">
+                <div class="card-img-overlay">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text"></p>
+                    <p class="card-text"><small></small></p>
+                  </div>
+                <div class="card-body">
+                  <p class="card-text">
+                    <b><%=listing.title%></b><br>
+                    &#8377; <%=listing.price.toLocaleString("en-IN")%>/night
+                  <i class="tax-info">&nbsp;+ &#8377;<%=(0.18*listing.price).toLocaleString("en-IN")%></i>                  </p>
+                </div>
+              </div>
+            </a>
+              <%}%>
+    </div>
+          <h1 class="mt-5"> EXPLORE BUSINESSES</h1><br>
+          <div class="row row-cols-lg-3  row-cols-md-2 row-cols-sm-1 mt-3 listing-card">
+           <%for(let business of allBusinesses){%>
+           <a href="/listings/<%=business._id%>" class="listing-link">
+            <div class="card col" >
+                <img src="<%=business.image.url%>" class="card-img-top" alt="image" style="height: 20rem;">
+                <div class="card-img-overlay">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text"></p>
+                    <p class="card-text"><small></small></p>
+                  </div>
+                <div class="card-body">
+                  <p class="card-text">
+                    <b><%=business.title%></b><br>
+                </div>
+              </div>
+           </a>
+              <%}%>
+          
+              <star></star>
+    </div>
+    <script>
+    let taxSwitch=document.getElementById("flexSwitchCheckDefault");
+    taxSwitch.addEventListener("click",()=>{
+     let taxinfo=document.getElementsByClassName("tax-info");
+     for(info of taxinfo){
+      if(info.style.display!="inline"){
+          info.style.display="inline";
+      }
+    else{
+      info.style.display="none";
+    }
+     }
+    })
+    // JavaScript for SOS Button functionality
+document.getElementById("sos-button").addEventListener("click", function() {
+    // Get user's current position using Geolocation API
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(sendSOSAlert, showError);
+    } else {
+        alert("Geolocation is not supported by this browser.");
+    }
+});
+
+document.getElementById("sosButton").addEventListener("click", function () {
+    // Get current location
+    navigator.geolocation.getCurrentPosition(function (position) {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+
+        // Send the SOS alert request
+        fetch("/sos-alert", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                latitude: latitude,
+                longitude: longitude,
+            }),
+        })
+            .then(response => response.json())
+            .then(data => {
+                // Display confirmation
+                alert(data.message);
+            })
+            .catch(error => {
+                console.error("Error sending SOS alert:", error);
+            });
+    });
+});
+
+
+// Function to handle errors if geolocation fails
+function showError(error) {
+    switch(error.code) {
+        case error.PERMISSION_DENIED:
+            alert("User denied the request for Geolocation.");
+            break;
+        case error.POSITION_UNAVAILABLE:
+            alert("Location information is unavailable.");
+            break;
+        case error.TIMEOUT:
+            alert("The request to get user location timed out.");
+            break;
+        case error.UNKNOWN_ERROR:
+            alert("An unknown error occurred.");
+            break;
+    }
+}
+
+    </script>
+   
+   
+

@@ -1,0 +1,31 @@
+<%layout("/layouts/boilerplate")%>
+<div class="row row-cols-lg-2  row-cols-md-1 row-cols-sm-1 mt-3 ">
+  <%for(let booking of AllBookings){%>
+      <a href="/listings/<%=booking.bookedproperty%>" class="listing-link">
+         <div class="card mt-5 mb-5 booked-card">
+                <div class="card-header booked-header">
+            Booking no. <%=booking._id%>
+           </div>
+           <div class="ms-2 stay-range" >
+            <p class="ms-2 checkin mt-2"><b>checkin:</b> <%=(booking.checkin.toString().substring(4,15))%>&nbsp;&nbsp;&nbsp;<div class="ms-5 range-gap"></div></p><p class="checkout mt-2"><b>checkout:</b> <%=(booking.checkout.toString().substring(4,15))%></p>
+           </div>
+           <div class="booking-container">
+             <div class="row col-5 booking-img">
+            <img src="<%=booking.image.url%>" class="ms-2 mb-2">
+           </div>
+           <div class="ms-4">
+            <h4 ><%=booking.title%></h4>
+            <h6 class="mt-4">Price:  &#8377;<%=(booking.Price.toLocaleString("en-IN"))%></h6>
+            <!-- <a href="#">cancel booking</a> -->
+            <p class="ms-5 booking-date"><i>booked on  ~ <%=(booking.createdAt.toString().substring(4,15))%></i></p>
+          </div>
+
+           </div>
+            </div>
+      </a>
+   <%}%>
+  </div> 
+
+
+   
+          
